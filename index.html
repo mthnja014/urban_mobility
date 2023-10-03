@@ -17,6 +17,7 @@
 <script src="https://unpkg.com/esri-leaflet@2.1.1/dist/esri-leaflet.js"></script>
 <script src="leaflet-search.css"></script>
 <script src="https://unpkg.com/esri-leaflet@2.1.1/dist/esri-leaflet.js"></script>
+    <script src="/js/leaflet-0.7.2/leaflet.ajax.min.js"></script>
 <script src="search.js"></script>
 </head>
 <style type="text/css">
@@ -78,8 +79,9 @@ L.control.scale({maxWidth: 100, metric: true, imperial: true}).setPosition('bott
 
   var topo = L.esri.basemapLayer("Topographic").addTo(map);
   var imag = L.esri.basemapLayer("Imagery").addTo(map);
-  
-L.geoJSON(built_up1.geojson).addTo(map);
+
+  var geojsonLayer = new L.GeoJSON.AJAX("built_up1.geojson");       
+geojsonLayer.addTo(map);
 
   var searchControl = new L.Control.Search ({
     layer: searchLayer,
